@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
+   @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+   private Car car;
+
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
@@ -37,6 +40,15 @@ public class User {
 
    public String getFirstName() {
       return firstName;
+   }
+
+   public Car getCar() {
+      return car;
+   }
+
+   public Car setCar(Car car) {
+      this.car = car;
+      return car;
    }
 
    public void setFirstName(String firstName) {
